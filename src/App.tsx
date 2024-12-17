@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import LoginForm from "./interfaces/pages/LoginForm";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "./interfaces/pages/Dashboard";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  
+    <div className="container">
+      <Router>
+      <div className="left-section">
+          <Routes>
+            <Route path="/" element={<LoginForm />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+      </div>
+      </Router>
+      <div className="right-section">
+        <img
+          src={`${process.env.PUBLIC_URL}/people.png`}
+          alt="Illustration"
+          className="max-w-full h-auto"
+        />
+      </div>
+      </div>
+
   );
-}
+};
 
 export default App;
